@@ -1,12 +1,13 @@
 # Mamba
-> **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**\
-> Albert Gu*, Tri Dao*\
+> **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**
+> Albert Gu*, Tri Dao*
 > Paper: https://arxiv.org/abs/2312.00752
 
-> **Transformers are SSMs: Generalized Models and Efficient Algorithms**\
->     **Through Structured State Space Duality**\
+> **Transformers are SSMs: Generalized Models and Efficient Algorithms**
+>     **Through Structured State Space Duality**
 > Tri Dao*, Albert Gu*\
 > Paper: https://arxiv.org/abs/2405.21060
+
 
 ---
 ## About
