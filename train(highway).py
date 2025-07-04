@@ -66,11 +66,14 @@ def set_seed(seed: int):
         torch.cuda.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
 
-def create_env(ENV_NAME: str) -> Tuple[gym.Env, int]:
-
-    env = gym.make(ENV_NAME, render_mode=None)
-    input_dim = int(np.prod(env.observation_space.shape))
-    return env, input_dim
+def create_env(env_name_str: str) -> Tuple[gym.Env, int]:
+    env = gym.make(env_name_str, render_mode=None)
+    if isinstance(env.observation_space, gym.spaces.Dict):
+        obs_shape = env.observation_space['observation'].shape
+    else:
+        obs_shape = env.observation_space.shape
+    input_dim_val = int(np.prod(obs_shape))
+    return env, input_dim_val
 
 
 def linear_epsilon_decay(step: int, start_eps: float, end_eps: float, decay_steps: int) -> float:
