@@ -11,7 +11,6 @@
 > **Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality**
 >
 > Tri Dao*, Albert Gu*
->
 > Paper: https://arxiv.org/abs/2405.21060
 
 ---
@@ -31,10 +30,9 @@ Mamba is a new state space model architecture showing promising performance on i
 
 Alternatively, you can clone the official [mamba-ssm GitHub repository](https://github.com/state-spaces/mamba) and install it manually:
 
-```bash
-git clone [https://github.com/state-spaces/mamba.git](https://github.com/state-spaces/mamba.git)
-cd mamba
-pip install .
+-   git clone [https://github.com/state-spaces/mamba.git](https://github.com/state-spaces/mamba.git)
+-   cd mamba
+-   pip install .
 
 Try passing `--no-build-isolation` to `pip` if installation encounters difficulties either when building from source or installing from PyPi. Common `pip` complaints that can be resolved in this way include PyTorch versions, but other cases exist as well.
 
