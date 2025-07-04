@@ -43,81 +43,62 @@ The associated publication is currently under preparation for peer-reviewed jour
 
 > **Latent Mamba-DQN: Improving Temporal Dependency Modeling in Deep Q-Learning via Selective State Summarization**  
 
+---
+
 ## 1. Architecture Overview
 
 Latent Mamba-DQN integrates a **Mamba-based State Space Model (Mamba-SSM)** into the DQN framework to effectively capture temporal information from sequential observations. The proposed model processes state sequences through an MLP layer, followed by Mamba layers for time-dependent feature extraction. A latent vector summarizing temporal dynamics is then utilized to estimate Q-values.
 
-Additionally, we extend the **Prioritized Experience Replay (PER)** mechanism to store and reuse latent representations for efficient learning.
+Additionally, we extend the **Prioritized Experience Replay (PER)** mechanism to store and reuse latent representations, improving learning efficiency and policy stability.
 
 ![Latent Mamba-DQN Training Flow](assets/mamba-dqn-architecture.png "Latent Mamba-DQN Training Pipeline")
----
-## Experimental Results
-
-The proposed **Latent Mamba-DQN** demonstrates superior performance in both dynamic and sparse-reward environments, compared to baseline models such as DQN, LSTM-DQN, and Transformer-DQN.
-
-All experiments were conducted using identical replay buffer structures and consistent hyperparameter settings to ensure fair comparisons.
 
 ---
 
-### 1. Highway-fast-v0 Environment (Dynamic Control Task)
+## 2. Experimental Results
 
-**Comparative Performance (Smoothed Results, Averaged over 5 seeds):**
+All experiments were conducted to identify optimal hyperparameter configurations for each environment. Consistent replay buffer structures were maintained to ensure reliable and reproducible evaluation of Latent Mamba-DQN.
 
-| Model            | Clipping | Avg. Smoothed Reward | Avg. Smoothed TD Loss |
-|------------------|----------|----------------------|-----------------------|
-| DQN              | 1.0      | 16.47                | 0.1471                |
-| DQN              | 0.5      | 17.09                | 0.1368                |
-| DQN              | 0.1      | 15.87                | 0.1427                |
-| LSTM-DQN         | 1.0      | 12.90                | 0.0717                |
-| LSTM-DQN         | 0.5      | 12.29                | 0.0796                |
-| LSTM-DQN         | 0.1      | 12.21                | 0.0711                |
-| Transformer-DQN  | 1.0      | 16.63                | 0.1648                |
-| Transformer-DQN  | 0.5      | 15.82                | 0.1509                |
-| Transformer-DQN  | 0.1      | 16.66                | 0.1467                |
-| **Mamba-DQN**    | 1.0      | 17.52                | 0.0207                |
-| **Mamba-DQN**    | 0.5      | **20.99**            | **0.0207**            |
-| **Mamba-DQN**    | 0.1      | 20.06                | 0.0215                |
+### 2.1 Highway-fast-v0 Environment (Dynamic Control Task)
+
+**Latent Mamba-DQN Performance (Smoothed Results, Averaged over 5 seeds):**
+
+| Clipping | Avg. Smoothed Reward | Avg. Smoothed TD Loss |
+|----------|----------------------|-----------------------|
+| 1.0      | 17.52                | 0.0207                |
+| 0.5      | **20.99**            | **0.0207**            |
+| 0.1      | 20.06                | 0.0215                |
 
 **Key Findings:**
-- Mamba-DQN achieves the highest average smoothed reward across all gradient clipping settings.
-- Significant reduction in TD Loss indicates enhanced learning stability.
-- Mamba-DQN demonstrates faster reward improvement and consistent policy learning with lower variance after convergence.
+- Latent Mamba-DQN achieves high average reward and low TD Loss across all gradient clipping settings.
+- Stable convergence and reduced loss indicate improved learning robustness and policy consistency.
+
+*Note:* Baseline models were also evaluated using their independently optimized hyperparameters to ensure fair performance comparison.
 
 ---
 
-### 2. LunarLander-v3 Environment (Sparse Reward Task)
+### 2.2 LunarLander-v3 Environment (Sparse Reward Task)
 
-**Performance Comparison (Fixed Clipping = 1.0):**
+**Latent Mamba-DQN Performance (Fixed Clipping = 1.0):**
 
-| Model           | Avg. Smoothed Reward | Avg. Smoothed TD Loss |
-|-----------------|----------------------|-----------------------|
-| DQN             | 27.40                | 0.0938                |
-| LSTM-DQN        | 99.60                | 0.1444                |
-| Transformer-DQN | 79.32                | 0.7578                |
-| **Mamba-DQN**   | **224.68**           | 0.1183                |
+| Avg. Smoothed Reward | Avg. Smoothed TD Loss |
+|----------------------|-----------------------|
+| **224.68**           | 0.1183                |
 
 **Observations:**
-- Mamba-DQN achieves rapid reward increase during early training.
-- Stable convergence at a reward level of 200 after approximately 175,000 steps, significantly outperforming baseline models.
+- Latent Mamba-DQN shows rapid reward increase during early training and stable convergence near 200 reward after approximately 175,000 steps.
+
+*The corresponding academic paper is currently under preparation but has not yet been accepted for publication. This repository will be updated with the DOI and publication details if the paper is accepted. Until then, please contact the corresponding author for detailed experimental results or additional information.*
 
 ---
 
-*For detailed convergence curves and additional experimental results, please refer to the main publication or contact the corresponding author.*
+## 3. Convergence Graphs
+### 3.1 Highway-fast-v0 Environment
 
----
+The following graphs illustrate the learning dynamics of Latent Mamba-DQN in the Highway-fast-v0 environment. All results represent the average of 5 independent training runs, each performed with a different random seed to ensure statistical validity and robustness.
 
-## Convergence Graphs
-
-##### Convergence Graphs
-
-### 1. Smoothed Reward and TD Loss — Highway-fast-v0
-
-The following graphs illustrate the learning dynamics of each model in the Highway-fast-v0 environment:
-
-- **Top**: Smoothed Total Reward over training steps  
-- **Bottom**: Smoothed TD Loss over training steps  
-
-Mamba-DQN demonstrates superior reward improvement during early training and maintains significantly lower TD Loss, indicating enhanced learning stability and more robust policy learning.
+- **Top:** Smoothed Total Reward over training steps  
+- **Bottom:** Smoothed TD Loss over training steps  
 
 ![Highway-fast-v0 Reward Curve](assets/highway_reward_Figure.png "Smoothed reward convergence for Highway-fast-v0")
 
@@ -125,20 +106,38 @@ Mamba-DQN demonstrates superior reward improvement during early training and mai
 
 ---
 
-### 2. Smoothed Reward and TD Loss — LunarLander-v3
+### 3.2 LunarLander-v3 Environment
 
-The following graphs present the smoothed total reward and TD Loss convergence for the LunarLander-v3 environment:
+The following graphs visualize the convergence behavior of Latent Mamba-DQN in the LunarLander-v3 environment. All results are averaged over 5 independent training runs, where each run was executed under a different random seed setting to ensure reliable evaluation.
 
-- **Top**: Smoothed Total Reward trajectory  
-- **Bottom**: Smoothed TD Loss convergence  
-
-Mamba-DQN achieves rapid reward increase, reaching stable convergence around 200 reward, while maintaining lower TD Loss than baseline models throughout training.
+- **Top:** Smoothed Total Reward trajectory  
+- **Bottom:** Smoothed TD Loss trajectory  
 
 ![LunarLander-v3 Reward Curve](assets/lunarlender_reward_Figure.png "Smoothed reward convergence for LunarLander-v3")
 
 ![LunarLander-v3 TD Loss Curve](assets/lunarlender_loss_Figure.png "Smoothed TD Loss convergence for LunarLander-v3")
 
+
+
+*All reported results are averaged over 5 independent seeds with a smoothing coefficient of 0.9 applied to reward and loss curves.*
+
 ---
 
-*All results are averaged over 5 independent seeds with a smoothing coefficient of 0.9 applied to reward and loss curves.*
+## 4. Acknowledgements
 
+We would like to thank the developers of the following open-source environments, which were essential for the experimental validation of Latent Mamba-DQN:
+
+- [HighwayEnv](https://github.com/Farama-Foundation/HighwayEnv): A high-speed autonomous driving simulation environment for dynamic control tasks.
+- [LunarLander-v3](https://gymnasium.farama.org/environments/box2d/lunar_lander/): A classic control environment for sparse-reward landing tasks.
+
+Their contributions to the research community made this work possible.
+
+---
+
+## 5. Contribution and License
+
+This repository is released under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/), permitting unrestricted use, modification, and distribution with proper citation.
+
+We encourage researchers and developers to freely modify, extend, or adapt this code to support further advancements in reinforcement learning and temporal sequence modeling.
+
+---
