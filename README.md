@@ -108,20 +108,37 @@ All experiments were conducted using identical replay buffer structures and cons
 
 ## Convergence Graphs
 
-### 1. Smoothed Reward / TD_Loss — Highway-fast-v0
+##### Convergence Graphs
 
-The following graph illustrates the smoothed reward convergence behavior across training steps for each model:
+### 1. Smoothed Reward and TD Loss — Highway-fast-v0
+
+The following graphs illustrate the learning dynamics of each model in the Highway-fast-v0 environment:
+
+- **Top**: Smoothed Total Reward over training steps  
+- **Bottom**: Smoothed TD Loss over training steps  
+
+Mamba-DQN demonstrates superior reward improvement during early training and maintains significantly lower TD Loss, indicating enhanced learning stability and more robust policy learning.
 
 ![Highway-fast-v0 Reward Curve](assets/highway_reward_Figure.png "Smoothed reward convergence for Highway-fast-v0")
-![Highway-fast-v0 Reward Curve](assets/highway_loss_Figure.png "Smoothed loss convergence for Highway-fast-v0")
+
+![Highway-fast-v0 TD Loss Curve](assets/highway_loss_Figure.png "Smoothed TD Loss convergence for Highway-fast-v0")
+
 ---
 
-### 2. Smoothed Reward / TD_Loss — LunarLander-v3
+### 2. Smoothed Reward and TD Loss — LunarLander-v3
 
-Mamba-DQN demonstrates superior early-stage learning speed and maintains stable performance after convergence:
+The following graphs present the smoothed total reward and TD Loss convergence for the LunarLander-v3 environment:
+
+- **Top**: Smoothed Total Reward trajectory  
+- **Bottom**: Smoothed TD Loss convergence  
+
+Mamba-DQN achieves rapid reward increase, reaching stable convergence around 200 reward, while maintaining lower TD Loss than baseline models throughout training.
 
 ![LunarLander-v3 Reward Curve](assets/lunarlender_reward_Figure.png "Smoothed reward convergence for LunarLander-v3")
-![Highway-fast-v0 Reward Curve](assets/lunarlender_loss_Figure.png "Smoothed loss convergence for LunarLander-v3")
+
+![LunarLander-v3 TD Loss Curve](assets/lunarlender_loss_Figure.png "Smoothed TD Loss convergence for LunarLander-v3")
+
 ---
 
-*All results are averaged over 5 independent seeds with a smoothing coefficient of 0.9 applied to reward curves.*
+*All results are averaged over 5 independent seeds with a smoothing coefficient of 0.9 applied to reward and loss curves.*
+
