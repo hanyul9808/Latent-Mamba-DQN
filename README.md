@@ -1,4 +1,4 @@
----
+
 # Mamba
 > **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**
 > Albert Gu*, Tri Dao*
