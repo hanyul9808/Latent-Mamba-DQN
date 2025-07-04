@@ -8,8 +8,7 @@
 >     **Through Structured State Space Duality**
 > Tri Dao*, Albert Gu*\
 > Paper: https://arxiv.org/abs/2405.21060
-
-
+---
 ---
 ## About
 
