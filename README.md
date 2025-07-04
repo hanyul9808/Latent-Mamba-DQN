@@ -49,6 +49,6 @@ Latent Mamba-DQN integrates a **Mamba-based State Space Model (Mamba-SSM)** into
 
 Additionally, we extend the **Prioritized Experience Replay (PER)** mechanism to store and reuse latent representations for efficient learning.
 
-![Latent Mamba-DQN Training Flow](assets/mamba_dqn_training_flow.png "Latent Mamba-DQN Training Pipeline")
+![Latent Mamba-DQN Training Flow](assets/mamba-dqn-architecture.png "Latent Mamba-DQN Training Pipeline")
 ---
 
