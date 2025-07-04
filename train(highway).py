@@ -10,8 +10,9 @@ import os
 from torch.utils.tensorboard import SummaryWriter
 from torch.amp import GradScaler, autocast
 from typing import Tuple, Optional, Union
-from mamba_dqn_network import latentMambaDQNNetwork
-from replay_buffer import PrioritizedReplayBufferGPU
+from network.mamba_dqn_network import latentMambaDQNNetwork
+from replay_buffer.per_buffer import PrioritizedReplayBufferGPU
+
 
 SELECTED_MODEL_CLASS = latentMambaDQNNetwork
 
