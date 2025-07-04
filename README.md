@@ -43,12 +43,12 @@ The associated publication is currently under preparation for peer-reviewed jour
 
 > **Latent Mamba-DQN: Improving Temporal Dependency Modeling in Deep Q-Learning via Selective State Summarization**  
 
-## 1. Model Architecture Overview
+## 1. Architecture Overview
 
 Latent Mamba-DQN integrates a **Mamba-based State Space Model (Mamba-SSM)** into the DQN framework to effectively capture temporal information from sequential observations. The proposed model processes state sequences through an MLP layer, followed by Mamba layers for time-dependent feature extraction. A latent vector summarizing temporal dynamics is then utilized to estimate Q-values.
 
 Additionally, we extend the **Prioritized Experience Replay (PER)** mechanism to store and reuse latent representations for efficient learning.
 
-
+![Latent Mamba-DQN Training Flow](assets/mamba_dqn_training_flow.png "Latent Mamba-DQN Training Pipeline")
 ---
 
