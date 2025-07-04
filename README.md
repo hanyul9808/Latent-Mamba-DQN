@@ -133,11 +133,3 @@ We would like to thank the developers of the following open-source environments,
 Their contributions to the research community made this work possible.
 
 ---
-
-## 5. Contribution and License
-
-This repository is released under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/), permitting unrestricted use, modification, and distribution with proper citation.
-
-We encourage researchers and developers to freely modify, extend, or adapt this code to support further advancements in reinforcement learning and temporal sequence modeling.
-
----
