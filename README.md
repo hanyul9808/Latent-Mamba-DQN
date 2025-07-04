@@ -1,3 +1,4 @@
+---
 # Mamba
 > **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**
 > Albert Gu*, Tri Dao*
@@ -22,6 +23,8 @@ with an efficient hardware-aware design and implementation in the spirit of [Fla
 - `pip install mamba-ssm`: Install the core Mamba package.
 - `pip install mamba-ssm[causal-conv1d]`: Install the core Mamba package along with causal-conv1d.
 - `pip install mamba-ssm[dev]`: Install the core Mamba package with development dependencies.
+
+---
 
 Alternatively, you can clone the official [mamba-ssm GitHub repository](https://github.com/state-spaces/mamba) and install it manually:
 
