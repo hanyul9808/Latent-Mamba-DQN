@@ -51,4 +51,77 @@ Additionally, we extend the **Prioritized Experience Replay (PER)** mechanism to
 
 ![Latent Mamba-DQN Training Flow](assets/mamba-dqn-architecture.png "Latent Mamba-DQN Training Pipeline")
 ---
+## Experimental Results
 
+The proposed **Latent Mamba-DQN** demonstrates superior performance in both dynamic and sparse-reward environments, compared to baseline models such as DQN, LSTM-DQN, and Transformer-DQN.
+
+All experiments were conducted using identical replay buffer structures and consistent hyperparameter settings to ensure fair comparisons.
+
+---
+
+### 1. Highway-fast-v0 Environment (Dynamic Control Task)
+
+**Comparative Performance (Smoothed Results, Averaged over 5 seeds):**
+
+| Model            | Clipping | Avg. Smoothed Reward | Avg. Smoothed TD Loss |
+|------------------|----------|----------------------|-----------------------|
+| DQN              | 1.0      | 16.47                | 0.1471                |
+| DQN              | 0.5      | 17.09                | 0.1368                |
+| DQN              | 0.1      | 15.87                | 0.1427                |
+| LSTM-DQN         | 1.0      | 12.90                | 0.0717                |
+| LSTM-DQN         | 0.5      | 12.29                | 0.0796                |
+| LSTM-DQN         | 0.1      | 12.21                | 0.0711                |
+| Transformer-DQN  | 1.0      | 16.63                | 0.1648                |
+| Transformer-DQN  | 0.5      | 15.82                | 0.1509                |
+| Transformer-DQN  | 0.1      | 16.66                | 0.1467                |
+| **Mamba-DQN**    | 1.0      | 17.52                | 0.0207                |
+| **Mamba-DQN**    | 0.5      | **20.99**            | **0.0207**            |
+| **Mamba-DQN**    | 0.1      | 20.06                | 0.0215                |
+
+**Key Findings:**
+- Mamba-DQN achieves the highest average smoothed reward across all gradient clipping settings.
+- Significant reduction in TD Loss indicates enhanced learning stability.
+- Mamba-DQN demonstrates faster reward improvement and consistent policy learning with lower variance after convergence.
+
+---
+
+### 2. LunarLander-v3 Environment (Sparse Reward Task)
+
+**Performance Comparison (Fixed Clipping = 1.0):**
+
+| Model           | Avg. Smoothed Reward | Avg. Smoothed TD Loss |
+|-----------------|----------------------|-----------------------|
+| DQN             | 27.40                | 0.0938                |
+| LSTM-DQN        | 99.60                | 0.1444                |
+| Transformer-DQN | 79.32                | 0.7578                |
+| **Mamba-DQN**   | **224.68**           | 0.1183                |
+
+**Observations:**
+- Mamba-DQN achieves rapid reward increase during early training.
+- Stable convergence at a reward level of 200 after approximately 175,000 steps, significantly outperforming baseline models.
+
+---
+
+*For detailed convergence curves and additional experimental results, please refer to the main publication or contact the corresponding author.*
+
+---
+
+## Convergence Graphs
+
+### 1. Smoothed Reward / TD_Loss — Highway-fast-v0
+
+The following graph illustrates the smoothed reward convergence behavior across training steps for each model:
+
+![Highway-fast-v0 Reward Curve](assets/highway_reward_Figure.png "Smoothed reward convergence for Highway-fast-v0")
+![Highway-fast-v0 Reward Curve](assets/highway_loss_Figure.png "Smoothed loss convergence for Highway-fast-v0")
+---
+
+### 2. Smoothed Reward / TD_Loss — LunarLander-v3
+
+Mamba-DQN demonstrates superior early-stage learning speed and maintains stable performance after convergence:
+
+![LunarLander-v3 Reward Curve](assets/lunarlender_reward_Figure.png "Smoothed reward convergence for LunarLander-v3")
+![Highway-fast-v0 Reward Curve](assets/lunarlender_loss_Figure.png "Smoothed loss convergence for LunarLander-v3")
+---
+
+*All results are averaged over 5 independent seeds with a smoothing coefficient of 0.9 applied to reward curves.*
