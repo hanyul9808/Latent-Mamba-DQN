@@ -1,37 +1,40 @@
-
 # Mamba
+
 > **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**
+>
 > Albert Gu*, Tri Dao*
+>
 > Paper: https://arxiv.org/abs/2312.00752
 
-> **Transformers are SSMs: Generalized Models and Efficient Algorithms**
->     **Through Structured State Space Duality**
-> Tri Dao*, Albert Gu*\
+---
+
+> **Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality**
+>
+> Tri Dao*, Albert Gu*
+>
 > Paper: https://arxiv.org/abs/2405.21060
+
 ---
----
+
 ## About
 
-Mamba is a new state space model architecture showing promising performance on information-dense data such as language modeling, where previous subquadratic models fall short of Transformers.
-It is based on the line of progress on [structured state space models](https://github.com/state-spaces/s4),
-with an efficient hardware-aware design and implementation in the spirit of [FlashAttention](https://github.com/Dao-AILab/flash-attention).
+Mamba is a new state space model architecture showing promising performance on information-dense data such as language modeling, where previous subquadratic models fall short of Transformers. It is based on the line of progress on [structured state space models](https://github.com/state-spaces/s4), with an efficient hardware-aware design and implementation in the spirit of [FlashAttention](https://github.com/Dao-AILab/flash-attention).
 
 ## Installation
 
-- [Optional] `pip install causal-conv1d>=1.4.0`: Efficient implementation of a causal Conv1d layer used inside the Mamba block.
-- `pip install mamba-ssm`: Install the core Mamba package.
-- `pip install mamba-ssm[causal-conv1d]`: Install the core Mamba package along with causal-conv1d.
-- `pip install mamba-ssm[dev]`: Install the core Mamba package with development dependencies.
+-   [Optional] `pip install causal-conv1d>=1.4.0`: Efficient implementation of a causal Conv1d layer used inside the Mamba block.
+-   `pip install mamba-ssm`: Install the core Mamba package.
+-   `pip install mamba-ssm[causal-conv1d]`: Install the core Mamba package along with causal-conv1d.
+-   `pip install mamba-ssm[dev]`: Install the core Mamba package with development dependencies.
 
 ---
 
 Alternatively, you can clone the official [mamba-ssm GitHub repository](https://github.com/state-spaces/mamba) and install it manually:
 
 ```bash
-git clone https://github.com/state-spaces/mamba.git
+git clone [https://github.com/state-spaces/mamba.git](https://github.com/state-spaces/mamba.git)
 cd mamba
 pip install .
-
 
 Try passing `--no-build-isolation` to `pip` if installation encounters difficulties either when building from source or installing from PyPi. Common `pip` complaints that can be resolved in this way include PyTorch versions, but other cases exist as well.
 
