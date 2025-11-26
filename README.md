@@ -144,3 +144,15 @@ We would like to thank the developers of the following open-source environments,
 Their contributions to the research community made this work possible.
 
 ---
+
+
+@article{ryu2025latent,
+  title={Latent Mamba-DQN: Improving Temporal Dependency Modeling in Deep Q-Learning via Selective State Summarization},
+  author={Ryu, HanYul and Sohn, Chae-Bong and Kim, Dae-Yeol},
+  journal={Applied Sciences},
+  volume={15},
+  number={16},
+  pages={8956},
+  year={2025},
+  publisher={MDPI}
+}
