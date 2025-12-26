@@ -1,3 +1,5 @@
+Looking back from the future (Master's 2nd sem), I clearly see the inefficiencies in this code written during my 1st semester. However, I have decided to keep it exactly as it is without refactoring. This repository serves not just as an implementation of the paper, but as a milestone of my growth—proving that I have learned from these past mistakes.
+
 # Mamba
 
 > **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**
