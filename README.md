@@ -1,4 +1,4 @@
-Looking back from the future (Master's 2nd sem), I clearly see the inefficiencies in this code written during my 1st semester. However, I have decided to keep it exactly as it is without refactoring. This repository serves not just as an implementation of the paper, but as a milestone of my growth—proving that I have learned from these past mistakes.
+# This code was written when I had just started my master’s program. I can see its inefficiencies clearly now, but I’ve chosen not to refactor it. I’m keeping these first traces exactly as they are—both as an implementation related to the paper, and as a milestone of my growth.
 
 # Mamba
 
